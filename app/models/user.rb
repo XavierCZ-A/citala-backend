@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   # Associations
   has_many :event_types, dependent: :destroy
+  has_many :availabilities, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, :last_name, presence: true

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     resources :event_types, except: [ :show ], path: "event"
+    resources :availabilities, except: [ :show ]
     namespace :authentication, path: "" do
       resources :sessions, only: [ :create ], path: "login"
       resources :users, path: "register", only: [ :create ]

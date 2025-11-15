@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_15_091253) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_15_101944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.integer "day_of_week", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
 
   create_table "event_types", force: :cascade do |t|
     t.string "name", null: false
@@ -38,5 +48,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_15_091253) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "availabilities", "users"
   add_foreign_key "event_types", "users"
 end
