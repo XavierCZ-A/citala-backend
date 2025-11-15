@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
+    resources :event_types, except: [ :show ]
     resources :sessions, only: [ :create ]
     resources :users
   end
