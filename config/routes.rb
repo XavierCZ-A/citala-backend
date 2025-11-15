@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :event_types, except: [ :show ]
-    resources :sessions, only: [ :create ]
-    resources :users
+    resources :event_types, except: [ :show ], path: "event"
+    namespace :authentication, path: "" do
+      resources :sessions, only: [ :create ], path: "login"
+      resources :users, path: "register", only: [ :create ]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

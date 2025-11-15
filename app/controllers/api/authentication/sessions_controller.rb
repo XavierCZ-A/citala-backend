@@ -1,4 +1,4 @@
-class Api::SessionsController < Api::BaseController
+class Api::Authentication::SessionsController < Api::BaseController
   skip_before_action :authenticate_user!
 
   def create
