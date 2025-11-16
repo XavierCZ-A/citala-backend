@@ -14,4 +14,8 @@ class Booking < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true, comparison: { greater_than: :start_time }
   validates :booking_source, presence: true
+
+  normalizes :invite_name, with: ->(invite_name) { invite_name.strip.downcase }
+  normalizes :invite_email, with: ->(invite_email) { invite_email.strip.downcase }
+  normalizes :invite_phone, with: ->(invite_phone) { invite_phone.delete("^0-9").delete_prefix("1") }
 end

@@ -16,6 +16,11 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 6 }
 
+  normalizes :email, with: ->(email) { email.strip.downcase }
+  normalizes :email, with: ->(first_name) { first_name.strip.downcase }
+  normalizes :email, with: ->(last_name) { last_name.strip.downcase }
+
+
   def full_name
     "#{first_name} #{last_name}".strip
   end
