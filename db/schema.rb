@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_15_101944) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_16_194034) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_15_101944) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_availabilities_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "invite_name", null: false
+    t.string "invite_email", null: false
+    t.string "invite_phone", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.string "booking_source", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "event_types", force: :cascade do |t|
@@ -49,5 +63,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_15_101944) do
   end
 
   add_foreign_key "availabilities", "users"
+  add_foreign_key "bookings", "users"
   add_foreign_key "event_types", "users"
 end

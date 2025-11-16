@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
+    resources :bookings
     resources :event_types, except: [ :show ], path: "event"
     resources :availabilities, except: [ :show ]
     namespace :authentication, path: "" do

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invite_name: MyString
+  invite_email: MyString
+  invite_phone: MyString
+  start_time: 2025-11-15 05:05:17
+  end_time: 2025-11-15 05:05:17
+  booking_source: MyString
+  status: 1
+
+two:
+  invite_name: MyString
+  invite_email: MyString
+  invite_phone: MyString
+  start_time: 2025-11-15 05:05:17
+  end_time: 2025-11-15 05:05:17
+  booking_source: MyString
+  status: 1
